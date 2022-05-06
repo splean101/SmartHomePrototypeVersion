@@ -79,6 +79,10 @@ export function renderHouse(h) {
     deviceSubmit.value = '+ Add Device';
     deviceSubmit.addEventListener('click', function () {
         var model = prompt('Enter the device`s model', '');
+        if(model === null){
+            console.log('NO DEVICE');
+            return;
+        }
         switch (addDeviceInput.value) {
             case 'Air Conditioner':
                 renderAir(model);
