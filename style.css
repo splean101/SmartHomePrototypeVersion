@@ -28,7 +28,7 @@ input[type="button"] {
  fieldset{
      width: 50%;
  }
- #mo, #ac {
+ .mo, .ac {
     width: 33%;
     border: 1px solid green;
     border-radius: 3px;
@@ -39,12 +39,12 @@ input[type="button"] {
    background-repeat: no-repeat;
    background-position: right;
  }
- #mo {
-   background-image: url('./mo.jpg');
+ .mo {
+   background-image: url('images/mo.jpg');
    
 }
-#ac {
-   background-image: url('./ac.jpg');   
+.ac {
+   background-image: url('images/ac.jpg');   
 }
  span {
    width: 100px;
@@ -52,14 +52,14 @@ input[type="button"] {
    border-radius: 5px;
    padding: 5px;
 }
- #mo div, #ac div {
+ .mo div, .ac div {
    text-align: center;
    width: 10%;
    border: 1px solid burlywood;
    padding: 5px;
    margin: 5px;
 }
-#del {
+.del {
    display: block;
    margin:  0 0 0 auto;
 }

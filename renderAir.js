@@ -6,7 +6,7 @@ export function renderAir(model) {
     myHouse.addConditioner(ac);
 
     var acDiv = document.createElement('div');
-    acDiv.id = 'ac';
+    acDiv.className = 'ac';
 
     var label1 = document.createElement('label');
     label1.id = 'model';
@@ -64,7 +64,7 @@ export function renderAir(model) {
 
     var delButton = document.createElement('button');
     delButton.type = 'button';
-    delButton.id = 'del';
+    delButton.className = 'del';
     delButton.innerHTML = '<b>Delete this Air Conditioner</b>';
     delButton.addEventListener('click', function(){
         document.body.removeChild(acDiv);

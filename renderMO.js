@@ -5,7 +5,7 @@ export function renderMO(model) {
     myHouse.addMO(mo);
 
     var moDiv = document.createElement('div');
-    moDiv.id = 'mo';
+    moDiv.className = 'mo';
 
     var label1 = document.createElement('label');
     label1.id = 'model';
@@ -63,7 +63,7 @@ export function renderMO(model) {
 
     var delButton = document.createElement('button');
     delButton.type = 'button';
-    delButton.id = 'del';
+    delButton.className = 'del';
     delButton.innerHTML = '<b>Delete this Microvawe Owen</b>';
     delButton.addEventListener('click', function(){
         document.body.removeChild(moDiv);
