@@ -1,66 +1,82 @@
 body {
    margin: 0;
    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-     sans-serif;
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
- }
+}
 
-[name = "deviceSubmit"] {
+[name="deviceSubmit"] {
    background: blanchedalmond;
    text-align: center;
    font-weight: bold;
 }
+
 input[type="button"] {
-    width:100px;
-    text-align: left;
-    padding: 3px;
-    margin: 5px;
- }
- input[type="text"], select {
-    margin: 3px;
- }
- label {
-    padding: 3px;
-    margin: 10px;
- }
- fieldset{
-     width: 50%;
- }
- .mo, .ac {
-    width: 33%;
-    border: 1px solid green;
-    border-radius: 3px;
-    padding: 7px;
-    margin: 5px;
-    line-height: 30px;
-    background-size: contain;
+   width: 100px;
+   text-align: left;
+   padding: 3px;
+   margin: 5px;
+}
+
+input[type="text"],
+select {
+   margin: 3px;
+}
+
+label {
+   padding: 3px;
+   margin: 10px;
+}
+
+fieldset {
+   width: 50%;
+}
+
+.tv,
+.mo,
+.ac {
+   width: 33%;
+   border: 1px solid rgb(10, 2, 48);
+   border-radius: 5px;
+   padding: 7px;
+   margin: 5px;
+   line-height: 30px;
+   background-size: contain;
    background-repeat: no-repeat;
    background-position: right;
- }
- .mo {
+}
+
+.mo {
    background-image: url('images/mo.jpg');
-   
+
 }
+
 .ac {
-   background-image: url('images/ac.jpg');   
+   background-image: url('images/ac.jpg');
 }
- span {
-   width: 100px;
+
+.value {
    border: 1px solid black;
    border-radius: 5px;
    padding: 5px;
 }
- .mo div, .ac div {
+
+.tv div,
+.mo div,
+.ac div {
    text-align: center;
-   width: 10%;
    border: 1px solid burlywood;
    padding: 5px;
    margin: 5px;
 }
+
 .del {
    display: block;
-   margin:  0 0 0 auto;
+   margin: 0 0 0 auto;
 }
- 
+
+.label {
+   text-align: left;
+}

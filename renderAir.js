@@ -3,14 +3,15 @@ import {AirConditioner} from './airCond.js';
 
 export function renderAir(model) {
     var ac = new AirConditioner(model);
+    //console.log(ac._state);
     myHouse.addConditioner(ac);
 
     var acDiv = document.createElement('div');
-    acDiv.className = 'ac';
+    acDiv.classList.add('ac');
 
     var label1 = document.createElement('label');
     label1.id = 'model';
-    label1.innerText = 'Model';
+    label1.textContent = 'Model';
 
     var model = document.createElement('input');
     model.type = 'text';
@@ -21,51 +22,58 @@ export function renderAir(model) {
     });
 
     var state = document.createElement('div');
-    state.innerText = ac.getState();
+    state.textContent = ac.getState();
 
-    var onBtn = document.createElement('button');
-    onBtn.type = 'button';
-    onBtn.innerText = 'On';
-    onBtn.addEventListener('click', function () {
+    var powerBtn = document.createElement('button');
+    powerBtn.type = 'button';
+    powerBtn.textContent = ac.getState() ? 'ON' : 'OFF';
+    powerBtn.addEventListener('click', function () {
         ac.on();
-        return state.innerText = ac.getState();
+        state.textContent = ac.getState();
+        console.log('after state', ac.getState());
+        powerBtn.textContent = !ac.getState() ? 'ON' : 'OFF';
+        ac.setState(!ac.getState());
+        console.log('after setState', ac.getState());
+
+        //return ac.setState(!ac._state)
     });
 
-    var offBtn = document.createElement('button');
+    /*var offBtn = document.createElement('button');
     offBtn.type = 'button';
-    offBtn.innerText = 'Off';
+    offBtn.textContent = 'Off';
     offBtn.addEventListener('click', function () {
         ac.off();
-        return state.innerText = ac.getState();
-    });
+        return state.textContent = ac.getState();
+    });*/
 
     var t = document.createElement('span');
-    t.id = 'power';
-    t.innerText = 'Temp:  ';
+    t.textContent = 'Temp:  ';
+    t.classList.add('label');
 
     var temp = document.createElement('span');
-    temp.innerText = ac._temp;
+    temp.textContent = ac._temp;
+    temp.classList.add('value');
 
     var increaseTemp = document.createElement('button');
     increaseTemp.type = 'button';
-    increaseTemp.innerHTML = '<b>+</b>';
+    increaseTemp.textContent = '+';
     increaseTemp.addEventListener('click', function () {
-        ac.increaseTemp();
-        return temp.innerText = ac._temp;
+        ac.changeTemp('+');
+        return temp.textContent = ac._temp;
     });
 
     var decreaseTemp = document.createElement('button');
     decreaseTemp.type = 'button';
-    decreaseTemp.innerHTML = '<b>-</b>';
+    decreaseTemp.textContent = '-';
     decreaseTemp.addEventListener('click', function () {
-        ac.decreaseTemp();
-        return temp.innerText = ac._temp;
+        ac.changeTemp('-');
+        return temp.textContent = ac._temp;
     });
 
     var delButton = document.createElement('button');
     delButton.type = 'button';
     delButton.className = 'del';
-    delButton.innerHTML = '<b>Delete this Air Conditioner</b>';
+    delButton.textContent = 'Delete this Air Conditioner';
     delButton.addEventListener('click', function(){
         document.body.removeChild(acDiv);
     });
@@ -76,8 +84,8 @@ export function renderAir(model) {
     acDiv.appendChild(label1);
     acDiv.appendChild(model);
     acDiv.appendChild(state);
-    acDiv.appendChild(onBtn);
-    acDiv.appendChild(offBtn);
+    acDiv.appendChild(powerBtn);
+    //acDiv.appendChild(offBtn);
     acDiv.appendChild(br1);
     acDiv.appendChild(t);
     acDiv.appendChild(temp);

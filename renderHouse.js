@@ -1,5 +1,6 @@
 import { renderMO } from './renderMO.js';
 import { renderAir } from './renderAir.js';
+import { renderTV } from './renderTV.js';
 
 export function renderHouse(h) {
     var fieldset = document.createElement('fieldset');
@@ -86,8 +87,11 @@ export function renderHouse(h) {
         switch (addDeviceInput.value) {
             case 'Air Conditioner':
                 renderAir(model);
+                break;
             case 'TV':
-                renderTv(model);
+                renderTV(model);
+                console.log(renderTV);
+                break;
             case 'Microwave Owen':
                 renderMO(model);
         };

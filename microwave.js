@@ -9,9 +9,9 @@ MicrowaveOven.prototype = Object.create(Device.prototype);
 MicrowaveOven.prototype.constructor = MicrowaveOven;
 
 MicrowaveOven.prototype.increasePower = function () {
-    if (this._power >= 0 && this._power < 700 && this._state === 'OFF') {
+    if (this._state === 'OFF') {
         alert('Turn on the Microwave Oven');
-    } else {
+    } else if (this._power < 700) {
         this._power += 100;
     };
 };
@@ -19,7 +19,7 @@ MicrowaveOven.prototype.increasePower = function () {
 MicrowaveOven.prototype.decreasePower = function () {
     if (this._power >= 100 && this._power <= 700 && this._state === 'OFF') {
         alert('Turn on the Microwave Oven');
-    } else {
+    } else if (this._power > 0) {
         this._power -= 100;
     };
 };
