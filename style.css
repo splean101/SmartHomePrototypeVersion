@@ -1,89 +1,88 @@
 body {
-   margin: 0;
-   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 [name="deviceSubmit"] {
-   background: blanchedalmond;
-   text-align: center;
-   font-weight: bold;
+  background: blanchedalmond;
+  text-align: center;
+  font-weight: bold;
 }
 
 input[type="button"] {
-   width: 100px;
-   text-align: left;
-   padding: 3px;
-   margin: 5px;
+  width: 100px;
+  text-align: left;
+  padding: 3px;
+  margin: 5px;
 }
 
 input[type="text"],
 select {
-   margin: 3px;
+  margin: 3px;
 }
 
 label {
-   padding: 3px;
-   margin: 10px;
+  padding: 3px;
+  margin: 10px;
 }
 
 fieldset {
-   width: 50%;
+  width: 50%;
 }
 
 .tv,
 .mo,
 .ac {
-      border: 1px solid rgb(10, 2, 48);
-   border-radius: 5px;
-   padding: 7px;
-   margin: 5px;
-   line-height: 30px;
-   background-size: contain;
-   background-repeat: no-repeat;
-   background-position: right;
+  border: 1px solid rgb(10, 2, 48);
+  border-radius: 5px;
+  padding: 7px;
+  margin: 5px;
+  line-height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
 .mo {
-   background-image: url('images/mo.jpg');
-
+  background-image: url("images/mo.jpg");
 }
 
 .ac {
-   background-image: url('images/ac.jpg');
+  background-image: url("images/ac.jpg");
 }
 
 .value {
-   border: 1px solid black;
-   border-radius: 5px;
-   padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .tv div,
 .mo div,
 .ac div {
-   text-align: left;
-   border: 1px solid burlywood;
-   padding: 5px;
-   margin: 5px;
+  text-align: left;
+  border: 1px solid burlywood;
+  padding: 5px;
+  margin: 5px;
 }
 
 .del {
-   display: block;
-   margin: 0 0 0 auto;
+  display: block;
+  margin: 0 0 0 auto;
 }
 
 .label {
-   text-align: left;
+  text-align: left;
 }
 
-.on{
-   background-color: rgb(10, 212, 20);
+.on {
+  background-color: rgb(10, 212, 20);
 }
 
-.off{
-   background-color: rgb(206, 54, 54);
+.off {
+  background-color: rgb(206, 54, 54);
 }
