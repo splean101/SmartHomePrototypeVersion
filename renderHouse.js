@@ -80,6 +80,8 @@ export function renderHouse(h) {
     if (model === null) {
       console.log("NO DEVICE");
       return;
+    } else if (model === "") {
+      model = "unknown model";
     }
     switch (addDeviceInput.value) {
       case "Air Conditioner":
@@ -87,7 +89,6 @@ export function renderHouse(h) {
         break;
       case "TV":
         renderTV(model);
-        console.log(renderTV);
         break;
       case "Microwave Owen":
         renderMO(model);

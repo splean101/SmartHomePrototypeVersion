@@ -21,9 +21,9 @@ TV.prototype.changeVolume = function (option) {
 TV.prototype.changeChanel = function (chanel) {
   if (!this._state) {
     alert("Turn the Device ON");
-  } else if (chanel === "+" && this._chanel <= 3) {
+  } else if (chanel === "+" && this._chanel < 12) {
     this._chanel += 1;
-  } else if (chanel === "-" && this._chanel >= 0) {
+  } else if (chanel === "-" && this._chanel > 1) {
     this._chanel -= 1;
   }
 };

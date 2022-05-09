@@ -3,7 +3,6 @@ import { AirConditioner } from "./airCond.js";
 
 export function renderAir(model) {
   var ac = new AirConditioner(model);
-  //console.log(ac._state);
   myHouse.addConditioner(ac);
 
   var acDiv = document.createElement("div");
@@ -15,7 +14,7 @@ export function renderAir(model) {
 
   var model = document.createElement("input");
   model.type = "text";
-  model.placeholder = "Enter the model of Air Conditioner";
+  model.placeholder = "unknown device";
   model.value = ac.Model();
   model.addEventListener("change", function () {
     ac.Model(model.value);
@@ -23,11 +22,7 @@ export function renderAir(model) {
 
   var state = document.createElement("span");
   state.textContent = ac.getState();
-  /*setInterval(function () {
-        if (!ac.getState()) {
-            state.textContent = new Date().toLocaleTimeString()
-        }
-    }, 1000)*/
+  state.classList.add("half-left");
 
   var onBtn = document.createElement("button");
   onBtn.type = "button";

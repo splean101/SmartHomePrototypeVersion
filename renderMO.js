@@ -13,7 +13,7 @@ export function renderMO(model) {
 
   var model = document.createElement("input");
   model.type = "text";
-  model.placeholder = "Enter the model of Microwave Owen";
+  model.placeholder = "unknown device";
   model.value = mo.Model();
   model.addEventListener("change", function () {
     mo.Model(model.value);
@@ -21,6 +21,7 @@ export function renderMO(model) {
 
   var state = document.createElement("div");
   state.textContent = mo.getState();
+  state.classList.add("half-left");
 
   var onBtn = document.createElement("button");
   onBtn.type = "button";
@@ -47,7 +48,7 @@ export function renderMO(model) {
 
   var increasePower = document.createElement("button");
   increasePower.type = "button";
-  increasePower.textContent = "<b>+</b>";
+  increasePower.textContent = "+";
   increasePower.addEventListener("click", function () {
     mo.increasePower();
     return (power.textContent = mo._power);
@@ -55,7 +56,7 @@ export function renderMO(model) {
 
   var decreasePower = document.createElement("button");
   decreasePower.type = "button";
-  decreasePower.textContent = "<b>-</b>";
+  decreasePower.textContent = "-";
   decreasePower.addEventListener("click", function () {
     mo.decreasePower();
     return (power.textContent = mo._power);
