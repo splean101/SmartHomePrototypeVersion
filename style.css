@@ -55,6 +55,10 @@ fieldset {
   background-image: url("images/ac.jpg");
 }
 
+.tv {
+  background-image: url("images/tv.jpg");
+}
+
 .value {
   border: 1px solid black;
   border-radius: 5px;
@@ -85,4 +89,9 @@ fieldset {
 
 .off {
   background-color: rgb(206, 54, 54);
+}
+
+.half-left{
+  width: 30%;
+  text-align: left;
 }

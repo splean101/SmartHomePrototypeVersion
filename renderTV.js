@@ -19,6 +19,7 @@ export function renderTV(model) {
   });
 
   var state = document.createElement("div");
+  state.classList.add("half-left");
   state.textContent = tv.getState();
 
   var onBtn = document.createElement("button");
@@ -31,36 +32,32 @@ export function renderTV(model) {
 
   var offBtn = document.createElement("button");
   offBtn.type = "button";
-  offBtn.innerText = "Off";
+  offBtn.textContent = "Off";
   offBtn.addEventListener("click", function () {
     tv.off();
     return (state.textContent = tv.getState());
   });
 
   var volume = document.createElement("span");
-  volume.innerText = "Volume ";
+  volume.textContent = "Volume ";
+
+  var range = document.createElement("input");
+  range.type = "range";
+  range.name = "volume";
+  range.value = 0;
+  range.step = 5;
 
   var volumeValue = document.createElement("span");
-  volumeValue.innerText = "0";
+  volumeValue.textContent = "0";
+
+  range.addEventListener("change", function () {
+    var vol = range.value;
+    tv.changeVolume(vol);
+    volumeValue.textContent = tv._volume;
+  });
 
   var chanel = document.createElement("span");
   chanel.textContent = tv._chanel;
-
-  var increaseVolume = document.createElement("button");
-  increaseVolume.type = "button";
-  increaseVolume.textContent = "+";
-  increaseVolume.addEventListener("click", function () {
-    tv.changeVolume("+");
-    return (volumeValue.innerText = tv._volume);
-  });
-
-  var decreaseVolume = document.createElement("button");
-  decreaseVolume.type = "button";
-  decreaseVolume.textContent = "-";
-  decreaseVolume.addEventListener("click", function () {
-    tv.changeVolume("-");
-    return (volumeValue.innerText = tv._volume);
-  });
 
   var delButton = document.createElement("button");
   delButton.type = "button";
@@ -71,15 +68,14 @@ export function renderTV(model) {
   });
 
   var volumeWrapper = document.createElement("div");
+  volumeWrapper.classList.add("half-left");
   volumeWrapper.appendChild(volume);
-  volumeWrapper.appendChild(decreaseVolume);
   volumeWrapper.appendChild(volumeValue);
-  volumeWrapper.appendChild(increaseVolume);
+  volumeWrapper.appendChild(range);
 
   var br1 = document.createElement("br");
   var br2 = document.createElement("br");
 
-  //console.log(myHouse);
   tvDiv.appendChild(label1);
   tvDiv.appendChild(model);
   tvDiv.appendChild(state);
