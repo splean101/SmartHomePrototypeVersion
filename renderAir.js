@@ -1,5 +1,5 @@
 import { myHouse } from './home.js';
-import {AirConditioner} from './airCond.js';
+import { AirConditioner } from './airCond.js';
 
 export function renderAir(model) {
     var ac = new AirConditioner(model);
@@ -21,30 +21,31 @@ export function renderAir(model) {
         ac.Model(model.value);
     });
 
-    var state = document.createElement('div');
+    var state = document.createElement('span');
     state.textContent = ac.getState();
+    /*setInterval(function () {
+        if (!ac.getState()) {
+            state.textContent = new Date().toLocaleTimeString()
+        }
+    }, 1000)*/
 
-    var powerBtn = document.createElement('button');
-    powerBtn.type = 'button';
-    powerBtn.textContent = ac.getState() ? 'ON' : 'OFF';
-    powerBtn.addEventListener('click', function () {
+    var onBtn = document.createElement('button');
+    onBtn.type = 'button';
+    onBtn.textContent = 'ON'; //ac.getState() ? 'ON' : 'OFF';
+    onBtn.addEventListener('click', function () {
         ac.on();
+        state.className = 'on';
         state.textContent = ac.getState();
-        console.log('after state', ac.getState());
-        powerBtn.textContent = !ac.getState() ? 'ON' : 'OFF';
-        ac.setState(!ac.getState());
-        console.log('after setState', ac.getState());
-
-        //return ac.setState(!ac._state)
     });
 
-    /*var offBtn = document.createElement('button');
+    var offBtn = document.createElement('button');
     offBtn.type = 'button';
-    offBtn.textContent = 'Off';
+    offBtn.textContent = 'OFF';
     offBtn.addEventListener('click', function () {
         ac.off();
+        state.className = 'off';
         return state.textContent = ac.getState();
-    });*/
+    });
 
     var t = document.createElement('span');
     t.textContent = 'Temp:  ';
@@ -73,25 +74,27 @@ export function renderAir(model) {
     var delButton = document.createElement('button');
     delButton.type = 'button';
     delButton.className = 'del';
-    delButton.textContent = 'Delete this Air Conditioner';
-    delButton.addEventListener('click', function(){
+    delButton.textContent = 'Delete';
+    delButton.addEventListener('click', function () {
         document.body.removeChild(acDiv);
     });
 
     var br1 = document.createElement('br');
     var br2 = document.createElement('br');
-    
+    var br3 = document.createElement('br');
+
     acDiv.appendChild(label1);
     acDiv.appendChild(model);
     acDiv.appendChild(state);
-    acDiv.appendChild(powerBtn);
-    //acDiv.appendChild(offBtn);
+    acDiv.appendChild(br3);
+    acDiv.appendChild(onBtn);
+    acDiv.appendChild(offBtn);
     acDiv.appendChild(br1);
     acDiv.appendChild(t);
     acDiv.appendChild(temp);
     acDiv.appendChild(br2);
     acDiv.appendChild(decreaseTemp);
     acDiv.appendChild(increaseTemp);
-    acDiv.appendChild(delButton);     
+    acDiv.appendChild(delButton);
     document.body.appendChild(acDiv);
 };

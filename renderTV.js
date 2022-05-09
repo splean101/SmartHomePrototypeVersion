@@ -40,7 +40,7 @@ export function renderTV(model) {
 
     var volume = document.createElement('span');
     //volume.id = 'volume';
-    volume.innerText = 'Volume';
+    volume.innerText = 'Volume ';
 
     var volumeValue = document.createElement('span');
     //volumeValue.id = 'volumeValue';
@@ -75,10 +75,10 @@ export function renderTV(model) {
 
     var volumeWrapper = document.createElement('div')
     volumeWrapper.appendChild(volume);
-    volumeWrapper.appendChild(increaseVolume);
-    volumeWrapper.appendChild(volumeValue);
     volumeWrapper.appendChild(decreaseVolume);
-
+    volumeWrapper.appendChild(volumeValue);
+    volumeWrapper.appendChild(increaseVolume);
+    
     var br1 = document.createElement('br');
     var br2 = document.createElement('br');
     

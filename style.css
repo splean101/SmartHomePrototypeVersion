@@ -37,8 +37,7 @@ fieldset {
 .tv,
 .mo,
 .ac {
-   width: 33%;
-   border: 1px solid rgb(10, 2, 48);
+      border: 1px solid rgb(10, 2, 48);
    border-radius: 5px;
    padding: 7px;
    margin: 5px;
@@ -66,7 +65,7 @@ fieldset {
 .tv div,
 .mo div,
 .ac div {
-   text-align: center;
+   text-align: left;
    border: 1px solid burlywood;
    padding: 5px;
    margin: 5px;
@@ -79,4 +78,12 @@ fieldset {
 
 .label {
    text-align: left;
+}
+
+.on{
+   background-color: rgb(10, 212, 20);
+}
+
+.off{
+   background-color: rgb(206, 54, 54);
 }
