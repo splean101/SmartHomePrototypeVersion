@@ -1,5 +1,5 @@
-import { myHouse } from "./home.js";
-import { TV } from "./tv.js";
+import { myHouse } from "../home.js";
+import { TV } from "../tv.js";
 export function renderTV(model) {
   var tv = new TV(model);
   myHouse.addTV(tv);

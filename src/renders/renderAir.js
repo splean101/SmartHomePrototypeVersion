@@ -1,5 +1,5 @@
-import { myHouse } from "./home.js";
-import { AirConditioner } from "./airCond.js";
+import { myHouse } from "../home.js";
+import { AirConditioner } from "../airCond.js";
 
 export function renderAir(model) {
   var ac = new AirConditioner(model);

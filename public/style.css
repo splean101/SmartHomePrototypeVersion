@@ -48,15 +48,15 @@ fieldset {
 }
 
 .mo {
-  background-image: url("images/mo.jpg");
+  background-image: url("../images/mo.jpg");
 }
 
 .ac {
-  background-image: url("images/ac.jpg");
+  background-image: url("../images/ac.jpg");
 }
 
 .tv {
-  background-image: url("images/tv.jpg");
+  background-image: url("../images/tv.jpg");
 }
 
 .value {

@@ -1,5 +1,5 @@
-import { myHouse } from "./home.js";
-import { MicrowaveOven } from "./microwave.js";
+import { myHouse } from "../home.js";
+import { MicrowaveOven } from "../microwave.js";
 export function renderMO(model) {
   var mo = new MicrowaveOven(model);
   myHouse.addMO(mo);
