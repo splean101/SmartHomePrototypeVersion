@@ -16,11 +16,15 @@ export function renderHouse(h) {
   var ownerInput = document.createElement("input");
   ownerInput.type = "text";
   ownerInput.value = h.Owner();
+  ownerInput.addEventListener('click', function () {
+    this.value = '';
+  })
 
   var ownerSubmit = document.createElement("input");
   ownerSubmit.type = "button";
   ownerSubmit.value = "Change";
-  ownerSubmit.addEventListener("click", function () {
+  ownerSubmit.addEventListener("click", function (event) {
+    event.preventDefault();
     h.Owner(ownerInput.value);
   });
 
@@ -37,6 +41,9 @@ export function renderHouse(h) {
   var adressInput = document.createElement("input");
   adressInput.type = "text";
   adressInput.value = h.Adress();
+  adressInput.addEventListener('click', function () {
+    this.value = '';
+  })
 
   var adressSubmit = document.createElement("input");
   adressSubmit.type = "button";

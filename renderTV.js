@@ -18,43 +18,51 @@ export function renderTV(model) {
     tv.Model(model.value);
   });
 
-  var state = document.createElement("div");
-  state.classList.add("half-left");
+  var state = document.createElement("span");
+  state.classList.add("value");
   state.textContent = tv.getState();
 
   var onBtn = document.createElement("button");
   onBtn.type = "button";
-  onBtn.textContent = "On";
+  onBtn.textContent = "ON";
   onBtn.addEventListener("click", function () {
     tv.on();
+    state.classList.remove("off");
+    state.classList.add("on");
     return (state.textContent = tv.getState());
   });
-
   var offBtn = document.createElement("button");
   offBtn.type = "button";
-  offBtn.textContent = "Off";
+  offBtn.textContent = "OFF";
   offBtn.addEventListener("click", function () {
     tv.off();
+    state.classList.remove("on");
+    state.classList.add("off");
     return (state.textContent = tv.getState());
   });
 
   var volume = document.createElement("label");
   volume.setAttribute("for", "volume");
   volume.textContent = "Volume ";
-
   var range = document.createElement("input");
   range.type = "range";
   range.name = "volume";
   range.value = 0;
   range.step = 5;
-
   var volumeValue = document.createElement("span");
   volumeValue.textContent = "0";
-
   range.addEventListener("input", function () {
     var vol = range.value;
     tv.changeVolume(vol);
     volumeValue.textContent = tv._volume;
+  });
+
+  var muteButton = document.createElement("button");
+  muteButton.textContent = "Mute";
+  muteButton.addEventListener("click", function () {
+    tv.muteVolume();
+    volumeValue.textContent = tv._volume;
+    range.value = 0;
   });
 
   var chanelLabel = document.createElement("label");
@@ -92,6 +100,7 @@ export function renderTV(model) {
   volumeWrapper.appendChild(volume);
   volumeWrapper.appendChild(volumeValue);
   volumeWrapper.appendChild(range);
+  volumeWrapper.appendChild(muteButton);
 
   var chanelWrapper = document.createElement("div");
   chanelWrapper.classList.add("half-left");

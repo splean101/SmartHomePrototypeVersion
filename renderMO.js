@@ -19,32 +19,39 @@ export function renderMO(model) {
     mo.Model(model.value);
   });
 
-  var state = document.createElement("div");
+  var state = document.createElement("span");
   state.textContent = mo.getState();
-  state.classList.add("half-left");
+  //state.classList.add("half-left");
+  state.classList.add("value");
 
   var onBtn = document.createElement("button");
   onBtn.type = "button";
-  onBtn.textContent = "On";
+  onBtn.textContent = "ON";
   onBtn.addEventListener("click", function () {
     mo.on();
+    state.classList.remove("off");
+    state.classList.add('on');
     return (state.textContent = mo.getState());
   });
 
   var offBtn = document.createElement("button");
   offBtn.type = "button";
-  offBtn.textContent = "Off";
+  offBtn.textContent = "OFF";
   offBtn.addEventListener("click", function () {
     mo.off();
+    state.classList.remove("on");
+    state.classList.add('off');
     return (state.textContent = mo.getState());
   });
 
   var p = document.createElement("span");
   p.id = "power";
-  p.textContent = "Power";
+  p.textContent = "Power: ";
+  p.classList.add("label");
 
   var power = document.createElement("span");
   power.textContent = mo._power;
+  power.classList.add("value");
 
   var increasePower = document.createElement("button");
   increasePower.type = "button";
@@ -65,7 +72,7 @@ export function renderMO(model) {
   var delButton = document.createElement("button");
   delButton.type = "button";
   delButton.className = "del";
-  delButton.textContent = "Delete this Microvawe Owen";
+  delButton.textContent = "Delete";
   delButton.addEventListener("click", function () {
     document.body.removeChild(moDiv);
   });
@@ -73,7 +80,6 @@ export function renderMO(model) {
   var br1 = document.createElement("br");
   var br2 = document.createElement("br");
 
-  //console.log(myHouse);
   moDiv.appendChild(label1);
   moDiv.appendChild(model);
   moDiv.appendChild(state);

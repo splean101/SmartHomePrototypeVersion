@@ -13,6 +13,7 @@ TV.prototype.constructor = TV;
 TV.prototype.changeVolume = function (option) {
   if (!this._state) {
     alert("Turn the Device ON");
+    document.getElementsByName('volume')[0].value = 0;
   } else {
     this._volume = option;
   }
@@ -25,18 +26,6 @@ TV.prototype.changeChanel = function (chanel) {
     this._chanel += 1;
   } else if (chanel === "-" && this._chanel > 1) {
     this._chanel -= 1;
-  }
-};
-
-TV.prototype.selectSource = function (source) {
-  if (!source) {
-    return this._source;
-  } else if (source === "HDMI") {
-    this._source = "HDMI";
-  } else if (source === "TV") {
-    this._source = "TV";
-  } else if (source && (source !== "HDMI" || source !== "TV")) {
-    alert("Please, choose the source - TV or HDMI");
   }
 };
 

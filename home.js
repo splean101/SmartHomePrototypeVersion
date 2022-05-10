@@ -34,4 +34,4 @@ Home.prototype.addMO = function (mo) {
     this._mo.push(mo);
 };
 
-export var myHouse = new Home('Vitalii', 'Kharkiv');
+export var myHouse = new Home('Owner', 'City');

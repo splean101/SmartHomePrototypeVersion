@@ -22,14 +22,16 @@ export function renderAir(model) {
 
   var state = document.createElement("span");
   state.textContent = ac.getState();
-  state.classList.add("half-left");
+  //state.classList.add("half-left");
+  state.classList.add("value");
 
   var onBtn = document.createElement("button");
   onBtn.type = "button";
   onBtn.textContent = "ON"; //ac.getState() ? 'ON' : 'OFF';
   onBtn.addEventListener("click", function () {
     ac.on();
-    state.className = "on";
+    state.classList.remove("off");
+    state.classList.add("on");
     state.textContent = ac.getState();
   });
 
@@ -38,7 +40,8 @@ export function renderAir(model) {
   offBtn.textContent = "OFF";
   offBtn.addEventListener("click", function () {
     ac.off();
-    state.className = "off";
+    state.classList.remove("on");
+    state.classList.add("off");
     return (state.textContent = ac.getState());
   });
 
@@ -81,7 +84,7 @@ export function renderAir(model) {
   acDiv.appendChild(label1);
   acDiv.appendChild(model);
   acDiv.appendChild(state);
-  acDiv.appendChild(br3);
+  //acDiv.appendChild(br3);
   acDiv.appendChild(onBtn);
   acDiv.appendChild(offBtn);
   acDiv.appendChild(br1);
