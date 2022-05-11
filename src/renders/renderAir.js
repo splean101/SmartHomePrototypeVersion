@@ -1,90 +1,77 @@
-import { myHouse } from "../home.js";
-import { AirConditioner } from "../airCond.js";
+import { myHouse } from '../home.js';
+import { AirConditioner } from '../airCond.js';
+import {
+  createElementWithAttributes,
+  changeClasses,
+} from '../commonFunctions.js';
 
 export function renderAir(model) {
   var ac = new AirConditioner(model);
   myHouse.addConditioner(ac);
 
-  var acDiv = document.createElement("div");
-  acDiv.classList.add("ac");
+  var acDiv = createElementWithAttributes('div', 'ac');
 
-  var label1 = document.createElement("label");
-  label1.id = "model";
-  label1.textContent = "Model";
+  var label1 = createElementWithAttributes('label', null, 'Model');
 
-  var model = document.createElement("input");
-  model.type = "text";
-  model.placeholder = "unknown device";
-  model.value = ac.Model();
-  model.addEventListener("change", function () {
+  var model = createElementWithAttributes(
+    'input',
+    null,
+    null,
+    'text',
+    'unknown device',
+    ac.Model()
+  );
+  model.addEventListener('change', function () {
     ac.Model(model.value);
   });
 
-  var state = document.createElement("span");
-  state.textContent = ac.getState();
-  //state.classList.add("half-left");
-  state.classList.add("value");
+  var state = createElementWithAttributes('span', 'value', ac.getState());
 
-  var onBtn = document.createElement("button");
-  onBtn.type = "button";
-  onBtn.textContent = "ON"; //ac.getState() ? 'ON' : 'OFF';
-  onBtn.addEventListener("click", function () {
+  var onBtn = createElementWithAttributes('button', null, 'ON', 'button');
+  onBtn.addEventListener('click', function () {
     ac.on();
-    state.classList.remove("off");
-    state.classList.add("on");
+    changeClasses(state, 'off', 'on');
     state.textContent = ac.getState();
   });
-
-  var offBtn = document.createElement("button");
-  offBtn.type = "button";
-  offBtn.textContent = "OFF";
-  offBtn.addEventListener("click", function () {
+  var offBtn = createElementWithAttributes('button', null, 'OFF', 'button');
+  offBtn.addEventListener('click', function () {
     ac.off();
-    state.classList.remove("on");
-    state.classList.add("off");
+    changeClasses(state, 'on', 'off');
     return (state.textContent = ac.getState());
   });
 
-  var t = document.createElement("span");
-  t.textContent = "Temp:  ";
-  t.classList.add("label");
+  var t = createElementWithAttributes('span', 'label', 'Temp:  ');
 
-  var temp = document.createElement("span");
-  temp.textContent = ac._temp;
-  temp.classList.add("value");
+  var temp = createElementWithAttributes('span', 'value', ac._temp);
 
-  var increaseTemp = document.createElement("button");
-  increaseTemp.type = "button";
-  increaseTemp.textContent = "+";
-  increaseTemp.addEventListener("click", function () {
-    ac.changeTemp("+");
+  var increaseTemp = createElementWithAttributes('button', null, '+', 'button');
+  increaseTemp.addEventListener('click', function () {
+    ac.changeTemp('+');
     return (temp.textContent = ac._temp);
   });
 
-  var decreaseTemp = document.createElement("button");
-  decreaseTemp.type = "button";
-  decreaseTemp.textContent = "-";
-  decreaseTemp.addEventListener("click", function () {
-    ac.changeTemp("-");
+  var decreaseTemp = createElementWithAttributes('button', null, '-', 'button');
+  decreaseTemp.addEventListener('click', function () {
+    ac.changeTemp('-');
     return (temp.textContent = ac._temp);
   });
 
-  var delButton = document.createElement("button");
-  delButton.type = "button";
-  delButton.className = "del";
-  delButton.textContent = "Delete";
-  delButton.addEventListener("click", function () {
+  var delButton = createElementWithAttributes(
+    'button',
+    'del',
+    'Delete',
+    'button'
+  );
+  delButton.addEventListener('click', function () {
     document.body.removeChild(acDiv);
   });
 
-  var br1 = document.createElement("br");
-  var br2 = document.createElement("br");
-  var br3 = document.createElement("br");
+  var br1 = document.createElement('br');
+  var br2 = document.createElement('br');
 
   acDiv.appendChild(label1);
   acDiv.appendChild(model);
   acDiv.appendChild(state);
-  //acDiv.appendChild(br3);
   acDiv.appendChild(onBtn);
   acDiv.appendChild(offBtn);
   acDiv.appendChild(br1);
