@@ -122,5 +122,5 @@ export function renderTV(model) {
   tvDiv.appendChild(chanelWrapper);
   tvDiv.appendChild(br2);
   tvDiv.appendChild(delButton);
-  document.body.appendChild(tvDiv);
+  document.querySelector('script').insertAdjacentElement('beforebegin', tvDiv);
 }

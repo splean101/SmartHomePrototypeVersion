@@ -81,5 +81,5 @@ export function renderAir(model) {
   acDiv.appendChild(decreaseTemp);
   acDiv.appendChild(increaseTemp);
   acDiv.appendChild(delButton);
-  document.body.appendChild(acDiv);
+  document.querySelector('script').insertAdjacentElement('beforebegin', acDiv);
 }

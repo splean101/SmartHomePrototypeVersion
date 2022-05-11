@@ -1,6 +1,10 @@
 import { renderMO } from './renderMO.js';
 import { renderAir } from './renderAir.js';
 import { renderTV } from './renderTV.js';
+import {
+  createElementWithAttributes,
+  changeClasses,
+} from '../commonFunctions.js';
 
 export function renderHouse(h) {
   var fieldset = document.createElement('fieldset');
@@ -9,19 +13,28 @@ export function renderHouse(h) {
 
   var owner = document.createElement('form');
 
-  var ownerLabel = document.createElement('label');
-  ownerLabel.innerText = 'Owner';
+  var ownerLabel = createElementWithAttributes('label', null, 'Owner');
 
-  var ownerInput = document.createElement('input');
-  ownerInput.type = 'text';
-  ownerInput.value = h.Owner();
+  var ownerInput = createElementWithAttributes(
+    'input',
+    null,
+    null,
+    'text',
+    null,
+    h.Owner()
+  );
   ownerInput.addEventListener('click', function () {
     this.value = '';
   });
 
-  var ownerSubmit = document.createElement('input');
-  ownerSubmit.type = 'button';
-  ownerSubmit.value = 'Change';
+  var ownerSubmit = createElementWithAttributes(
+    'input',
+    null,
+    null,
+    'button',
+    null,
+    'Change'
+  );
   ownerSubmit.addEventListener('click', function (event) {
     event.preventDefault();
     h.Owner(ownerInput.value);
@@ -33,20 +46,28 @@ export function renderHouse(h) {
 
   var adress = document.createElement('form');
 
-  var adressLabel = document.createElement('label');
-  adressLabel.innerText = 'Adress';
+  var adressLabel = createElementWithAttributes('label', null, 'Adress');
 
-  var adressInput = document.createElement('input');
-  adressInput.type = 'text';
-  adressInput.value = h.Adress();
+  var adressInput = createElementWithAttributes(
+    'input',
+    null,
+    null,
+    'text',
+    null,
+    h.Adress()
+  );
   adressInput.addEventListener('click', function () {
     this.value = '';
   });
 
-  var adressSubmit = document.createElement('input');
-  adressSubmit.type = 'button';
-  adressInput.name = 'adressSubmit';
-  adressSubmit.value = 'Change';
+  var adressSubmit = createElementWithAttributes(
+    'input',
+    null,
+    null,
+    'button',
+    null,
+    'Change'
+  );
   adressSubmit.addEventListener('click', function () {
     h.Adress(adressInput.value);
   });
@@ -56,28 +77,51 @@ export function renderHouse(h) {
   adress.appendChild(adressSubmit);
 
   var addDevice = document.createElement('form');
-  
-  var addDeviceLabel = document.createElement('label');
-  addDeviceLabel.innerText = 'Choose Device';
+
+  var addDeviceLabel = createElementWithAttributes(
+    'label',
+    null,
+    'Choose Device'
+  );
 
   var addDeviceInput = document.createElement('select');
-  
-  var airOption = document.createElement('option');
-  airOption.value = 'Air Conditioner';
-  airOption.innerText = 'Air Conditioner';
 
-  var tvOption = document.createElement('option');
-  tvOption.value = 'TV';
-  tvOption.innerText = 'TV';
+  var airOption = createElementWithAttributes(
+    'option',
+    null,
+    'Air Conditioner',
+    null,
+    null,
+    'Air Conditioner'
+  );
 
-  var moOption = document.createElement('option');
-  moOption.value = 'Microwave Owen';
-  moOption.innerText = 'Microwave Owen';
+  var tvOption = createElementWithAttributes(
+    'option',
+    null,
+    'TV',
+    null,
+    null,
+    'TV'
+  );
 
-  var deviceSubmit = document.createElement('input');
-  deviceSubmit.type = 'button';
+  var moOption = createElementWithAttributes(
+    'option',
+    null,
+    'Microwave Owen',
+    null,
+    null,
+    'Microwave Owen'
+  );
+
+  var deviceSubmit = createElementWithAttributes(
+    'input',
+    null,
+    null,
+    'button',
+    null,
+    '+ Add Device'
+  );
   deviceSubmit.name = 'deviceSubmit';
-  deviceSubmit.value = '+ Add Device';
   deviceSubmit.addEventListener('click', function () {
     var model = prompt('Enter the device`s model', '');
     if (model === null) {

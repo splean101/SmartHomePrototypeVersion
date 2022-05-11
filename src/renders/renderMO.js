@@ -91,5 +91,5 @@ export function renderMO(model) {
   moDiv.appendChild(decreasePower);
   moDiv.appendChild(increasePower);
   moDiv.appendChild(delButton);
-  moDiv.insertAdjacentElement('afterend', document.querySelector('script') );
+  document.querySelector('script').insertAdjacentElement('beforebegin', moDiv);
 }
