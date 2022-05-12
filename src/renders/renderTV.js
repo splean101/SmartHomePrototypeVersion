@@ -1,116 +1,124 @@
-import { myHouse } from "../home.js";
-import { TV } from "../tv.js";
+import {
+  changeClasses,
+  createElementWithAttributes,
+} from '../commonFunctions.js';
+import { myHouse } from '../home.js';
+import { TV } from '../tv.js';
 export function renderTV(model) {
   var tv = new TV(model);
   myHouse.addTV(tv);
 
-  var tvDiv = document.createElement("div");
-  tvDiv.classList.add("tv");
+  var tvDiv = createElementWithAttributes('div', 'tv');
 
-  var label1 = document.createElement("label");
-  label1.textContent = "Model";
+  var label1 = createElementWithAttributes('label', null, 'Model');
 
-  var model = document.createElement("input");
-  model.type = "text";
-  model.placeholder = "unknown device";
-  model.value = tv.Model();
-  model.addEventListener("change", function () {
+  var model = createElementWithAttributes(
+    'input',
+    null,
+    null,
+    'text',
+    'unknown device',
+    tv.Model()
+  );
+  model.addEventListener('change', function () {
     tv.Model(model.value);
   });
 
-  var state = document.createElement("span");
-  state.classList.add("value");
-  state.textContent = tv.getState();
+  var state = createElementWithAttributes('span', 'value', tv.getState());
 
-  var onBtn = document.createElement("button");
-  onBtn.type = "button";
-  onBtn.textContent = "ON";
-  onBtn.addEventListener("click", function () {
+  var onBtn = createElementWithAttributes('button', null, 'ON', 'button');
+  onBtn.addEventListener('click', function () {
     tv.on();
-    state.classList.remove("off");
-    state.classList.add("on");
+    changeClasses(state, 'off', 'on');
     return (state.textContent = tv.getState());
   });
-  var offBtn = document.createElement("button");
-  offBtn.type = "button";
-  offBtn.textContent = "OFF";
-  offBtn.addEventListener("click", function () {
+  var offBtn = document.createElement('button');
+  offBtn.type = 'button';
+  offBtn.textContent = 'OFF';
+  offBtn.addEventListener('click', function () {
     tv.off();
-    state.classList.remove("on");
-    state.classList.add("off");
+    changeClasses(state, 'on', 'off');
     return (state.textContent = tv.getState());
   });
 
-  var volume = document.createElement("label");
-  volume.setAttribute("for", "volume");
-  volume.textContent = "Volume ";
-  var range = document.createElement("input");
-  range.type = "range";
-  range.name = "volume";
+  var volume = createElementWithAttributes('label', null, 'Volume ');
+  volume.setAttribute('for', 'volume');
+  var range = createElementWithAttributes('input', null, null, 'range');
+  range.name = 'volume';
   range.value = 0;
   range.step = 5;
-  var volumeValue = document.createElement("span");
-  volumeValue.textContent = "0";
-  range.addEventListener("input", function () {
+  var volumeValue = createElementWithAttributes('span', null, '0');
+  range.addEventListener('input', function () {
     var vol = range.value;
     tv.changeVolume(vol);
     volumeValue.textContent = tv._volume;
   });
 
-  var muteButton = document.createElement("button");
-  muteButton.textContent = "Mute";
-  muteButton.addEventListener("click", function () {
+  var muteButton = createElementWithAttributes('button', null, 'Mute');
+  muteButton.addEventListener('click', function () {
     tv.muteVolume();
     volumeValue.textContent = tv._volume;
     range.value = 0;
   });
 
-  var chanelLabel = document.createElement("label");
-  chanelLabel.for = "chanel";
-  chanelLabel.textContent = "Chanel: ";
-  var chanel = document.createElement("input");
-  chanel.type = "text";
-  chanel.name = "chanel";
-  chanel.value = tv._chanel;
-  var increaseChanel = document.createElement("button");
-  increaseChanel.type = "button";
-  increaseChanel.textContent = "^";
-  increaseChanel.addEventListener("click", function () {
-    tv.changeChanel("+");
+  var chanelLabel = createElementWithAttributes('label', null, 'Chanel: ');
+  chanelLabel.for = 'chanel';
+  var chanel = createElementWithAttributes(
+    'input',
+    null,
+    null,
+    'text',
+    null,
+    tv._chanel
+  );
+  chanel.name = 'chanel';
+  var increaseChanel = createElementWithAttributes(
+    'button',
+    null,
+    '^',
+    'button'
+  );
+  increaseChanel.addEventListener('click', function () {
+    tv.changeChanel('+');
     chanel.value = tv._chanel;
   });
-  var decreaseChanel = document.createElement("button");
-  decreaseChanel.type = "button";
-  decreaseChanel.textContent = "v";
-  decreaseChanel.addEventListener("click", function () {
-    tv.changeChanel("-");
+  var decreaseChanel = createElementWithAttributes(
+    'button',
+    null,
+    'v',
+    'button'
+  );
+  decreaseChanel.addEventListener('click', function () {
+    tv.changeChanel('-');
     chanel.value = tv._chanel;
   });
 
-  var delButton = document.createElement("button");
-  delButton.type = "button";
-  delButton.className = "del";
-  delButton.textContent = "Delete";
-  delButton.addEventListener("click", function () {
+  var delButton = createElementWithAttributes(
+    'button',
+    'del',
+    'Delete',
+    'button'
+  );
+  delButton.addEventListener('click', function () {
     document.body.removeChild(tvDiv);
   });
 
-  var volumeWrapper = document.createElement("div");
-  volumeWrapper.classList.add("half-left");
+  var volumeWrapper = document.createElement('div');
+  volumeWrapper.classList.add('half-left');
   volumeWrapper.appendChild(volume);
   volumeWrapper.appendChild(volumeValue);
   volumeWrapper.appendChild(range);
   volumeWrapper.appendChild(muteButton);
 
-  var chanelWrapper = document.createElement("div");
-  chanelWrapper.classList.add("half-left");
+  var chanelWrapper = document.createElement('div');
+  chanelWrapper.classList.add('half-left');
   chanelWrapper.appendChild(chanelLabel);
   chanelWrapper.appendChild(chanel);
   chanelWrapper.appendChild(increaseChanel);
   chanelWrapper.appendChild(decreaseChanel);
 
-  var br1 = document.createElement("br");
-  var br2 = document.createElement("br");
+  var br1 = document.createElement('br');
+  var br2 = document.createElement('br');
 
   tvDiv.appendChild(label1);
   tvDiv.appendChild(model);

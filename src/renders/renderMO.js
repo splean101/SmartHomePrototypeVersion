@@ -44,6 +44,7 @@ export function renderMO(model) {
   var p = createElementWithAttributes('span', 'label', 'Power: ');
   
   var power = createElementWithAttributes('span', 'value', mo._power);
+  console.log(`mo power ${mo._power}`);
 
   var increasePower = createElementWithAttributes('button', null, '+', 'button');
    increasePower.addEventListener('click', function () {
